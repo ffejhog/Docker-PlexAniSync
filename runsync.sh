@@ -11,7 +11,7 @@ then
     cp ${CUSTOM_MAPPINGS} /plexanisync/custom_mappings.ini
   else
     echo "Found remote custom mapping file and importing: ${CUSTOM_MAPPINGS}"
-    wget -O /plexanisync/custom_mappings.ini "${CUSTOM_MAPPINGS_HEADER}" ${CUSTOM_MAPPINGS}
+    wget --header="Authorization: ${CUSTOM_MAPPINGS_TOKEN}" --header="Accept: application/vnd.github.v4.raw" -O /plexanisync/custom_mappings.ini ${CUSTOM_MAPPINGS}
   fi
 else
   echo "No custom mapping specified"
